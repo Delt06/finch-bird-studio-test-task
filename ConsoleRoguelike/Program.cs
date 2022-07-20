@@ -49,8 +49,9 @@ void UpdateGame() { }
 static void RenderGame(Game game, Renderer renderer)
 {
 	Console.Clear();
+	Console.ResetColor();
 	
-	var emptyCell = new RenderInfo('-', 0);
+	var emptyCell = new RenderInfo('■', 0, ConsoleColor.DarkGray);
 
 
 	for (var xi = 0; xi < game.LevelSize.X; xi++)
@@ -61,6 +62,7 @@ static void RenderGame(Game game, Renderer renderer)
 			var renderInfo = entities.Select(renderer.Render)
 				.OrderByDescending(ri => ri.Order)
 				.FirstOrDefault(emptyCell);
+			Console.BackgroundColor = renderInfo.Color;
 			Console.Write(renderInfo.Character);
 		}
 
