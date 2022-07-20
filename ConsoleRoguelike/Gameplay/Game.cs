@@ -69,4 +69,8 @@ public class Game : IGame
 			}
 		}
 	}
+
+	public GameResult? Result { get; private set; }
+
+	public void Finish(GameResult result) => Result = result;
 }

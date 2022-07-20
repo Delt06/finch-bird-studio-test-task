@@ -15,6 +15,7 @@ const int rollbackCapacity = 10;
 
 var inputSystem = new InputSystem(input, rollbackCapacity);
 var rollbackSystem = new RollbackSystem(game, rollbackCapacity);
+var winLoseSystem = new WinLoseSystem(game);
 var gameplaySystem = new GameplaySystem(game, rollbackSystem, input);
 
 var levelGenerator = new LevelGenerator(game)
@@ -29,7 +30,26 @@ renderer.Render();
 
 while (true)
 {
+	var gameResult = winLoseSystem.Check();
+	if (gameResult != null)
+	{
+		game.Finish(gameResult.Value);
+		break;
+	}
+
 	inputSystem.ReadInput();
 	gameplaySystem.Update();
 	renderer.Render();
+}
+
+switch (game.Result)
+{
+	case GameResult.Win:
+		Console.WriteLine("You won!");
+		break;
+	case GameResult.Lose:
+		Console.WriteLine("You died!");
+		break;
+	default:
+		throw new ArgumentOutOfRangeException();
 }
