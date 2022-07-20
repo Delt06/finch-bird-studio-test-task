@@ -4,7 +4,7 @@ namespace ConsoleRoguelike.Rendering;
 
 public class Renderer
 {
-	public RenderInfo Render(Entity entity) =>
+	public RenderInfo Render(IEntity entity) =>
 		entity switch
 		{
 			Player => new RenderInfo('P', 1, ConsoleColor.Green),

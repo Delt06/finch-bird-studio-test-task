@@ -51,7 +51,7 @@ static void ReadInput(Input input)
 
 static void UpdateGame(Game game)
 {
-	var updateOrder = new List<Entity> { game.Player };
+	var updateOrder = new List<IEntity> { game.Player };
 
 	for (var xi = 0; xi < game.LevelSize.X; xi++)
 	{

@@ -4,20 +4,20 @@ namespace ConsoleRoguelike.Gameplay;
 
 public class Game
 {
-	private readonly HashSet<Entity> _destroyedEntities = new();
-	private readonly HashSet<Entity>[,] _level;
+	private readonly HashSet<IEntity> _destroyedEntities = new();
+	private readonly HashSet<IEntity>[,] _level;
 
 	public Game(Player player, Vector2Int levelSize)
 	{
 		Player = player;
-		_level = new HashSet<Entity>[levelSize.X, levelSize.Y];
+		_level = new HashSet<IEntity>[levelSize.X, levelSize.Y];
 		LevelSize = levelSize;
 
 		for (var xi = 0; xi < levelSize.X; xi++)
 		{
 			for (var yi = 0; yi < levelSize.Y; yi++)
 			{
-				_level[xi, yi] = new HashSet<Entity>();
+				_level[xi, yi] = new HashSet<IEntity>();
 			}
 		}
 
@@ -28,9 +28,9 @@ public class Game
 
 	public Player Player { get; }
 
-	public bool IsDestroyed(Entity entity) => _destroyedEntities.Contains(entity);
+	public bool IsDestroyed(IEntity entity) => _destroyedEntities.Contains(entity);
 
-	public ICollection<Entity> GetEntitiesAt(Vector2Int position)
+	public ICollection<IEntity> GetEntitiesAt(Vector2Int position)
 	{
 		if (position.X < 0 || position.X >= LevelSize.X) throw new ArgumentOutOfRangeException(nameof(position.X));
 		if (position.Y < 0 || position.Y >= LevelSize.Y) throw new ArgumentOutOfRangeException(nameof(position.Y));
@@ -38,14 +38,14 @@ public class Game
 		return _level[position.X, position.Y].ToList();
 	}
 
-	public void Place(Entity entity, Vector2Int position)
+	public void Place(IEntity entity, Vector2Int position)
 	{
 		_level[entity.Position.X, entity.Position.Y].Remove(entity);
 		entity.Position = position;
 		_level[position.X, position.Y].Add(entity);
 	}
 
-	public void Destroy(Entity entity)
+	public void Destroy(IEntity entity)
 	{
 		if (entity is IOnPreDestroyHandler handler)
 			handler.OnPreDestroy(this);
