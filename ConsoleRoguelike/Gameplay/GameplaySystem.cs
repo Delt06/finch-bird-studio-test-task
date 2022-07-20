@@ -1,4 +1,5 @@
-﻿using ConsoleRoguelike.Shared;
+﻿using ConsoleRoguelike.Gameplay.Entities;
+using ConsoleRoguelike.Shared;
 
 namespace ConsoleRoguelike.Gameplay;
 

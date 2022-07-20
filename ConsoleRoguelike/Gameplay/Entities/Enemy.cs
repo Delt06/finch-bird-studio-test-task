@@ -1,6 +1,6 @@
 ﻿using ConsoleRoguelike.Shared;
 
-namespace ConsoleRoguelike.Gameplay;
+namespace ConsoleRoguelike.Gameplay.Entities;
 
 public class Enemy : Entity, IOnPreDestroyHandler, IDestructibleByPlayer
 {

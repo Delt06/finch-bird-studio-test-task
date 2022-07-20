@@ -1,4 +1,5 @@
 ﻿using ConsoleRoguelike.Gameplay;
+using ConsoleRoguelike.Gameplay.Entities;
 using ConsoleRoguelike.InputHandling;
 using ConsoleRoguelike.Rendering;
 using ConsoleRoguelike.Shared;

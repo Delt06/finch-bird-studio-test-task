@@ -1,6 +1,6 @@
 ﻿using ConsoleRoguelike.InputHandling;
 
-namespace ConsoleRoguelike.Gameplay;
+namespace ConsoleRoguelike.Gameplay.Entities;
 
 public class Player : Entity
 {

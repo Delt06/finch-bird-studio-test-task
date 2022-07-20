@@ -1,4 +1,4 @@
-﻿namespace ConsoleRoguelike.Gameplay;
+﻿namespace ConsoleRoguelike.Gameplay.Entities;
 
 public class DeadBody : Entity
 {
