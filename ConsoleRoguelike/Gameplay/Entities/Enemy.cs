@@ -3,7 +3,7 @@ using ConsoleRoguelike.Shared;
 
 namespace ConsoleRoguelike.Gameplay.Entities;
 
-public class Enemy : EntityBase, IOnPreDestroyHandler, IDestructibleByPlayer, ISnapshotProvider
+public class Enemy : EntityBase, IOnPreDestroyHandler, IDestructibleByPlayer, ISnapshotProvider, IBlockingMovement
 {
 	public void OnPreDestroy(IGame game)
 	{

@@ -3,7 +3,7 @@ using ConsoleRoguelike.InputHandling;
 
 namespace ConsoleRoguelike.Gameplay.Entities;
 
-public class Player : EntityBase, ISnapshotProvider
+public class Player : EntityBase, ISnapshotProvider, IBlockingMovement
 {
 	private readonly Input _input;
 

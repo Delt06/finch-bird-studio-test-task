@@ -1,4 +1,5 @@
-﻿using ConsoleRoguelike.Shared;
+﻿using ConsoleRoguelike.Gameplay.Entities;
+using ConsoleRoguelike.Shared;
 
 namespace ConsoleRoguelike.Gameplay;
 
@@ -11,5 +12,5 @@ public static class GameExtensions
 		position.Y >= game.LevelSize.Y;
 
 	public static bool IsBusyAtPosition(this IGame game, Vector2Int position) =>
-		game.GetEntitiesAt(position).Any();
+		game.GetEntitiesAt(position).OfType<IBlockingMovement>().Any();
 }
