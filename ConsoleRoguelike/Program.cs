@@ -16,15 +16,15 @@ game.Place(new Enemy(), new Vector2Int(3, 7));
 game.Place(new Enemy(), new Vector2Int(8, 1));
 
 
-var renderer = new Renderer();
+var renderer = new Renderer(game);
 
-RenderGame(game, renderer);
+renderer.Render();
 
 while (true)
 {
 	ReadInput(input);
 	UpdateGame(game);
-	RenderGame(game, renderer);
+	renderer.Render();
 }
 
 static void ReadInput(Input input)
@@ -73,32 +73,4 @@ static void UpdateGame(Game game)
 	}
 
 	game.OnLateUpdate();
-}
-
-static void RenderGame(Game game, Renderer renderer)
-{
-	Console.Clear();
-	Console.ResetColor();
-
-	Console.WriteLine("Health: " + game.Player.Health);
-
-	var emptyCell = new RenderInfo('■', 0, ConsoleColor.DarkGray);
-
-
-	for (var yi = 0; yi < game.LevelSize.Y; yi++)
-	{
-		for (var xi = 0; xi < game.LevelSize.X; xi++)
-		{
-			var entities = game.GetEntitiesAt(new Vector2Int(xi, yi));
-			var renderInfo = entities.Select(renderer.Render)
-				.OrderByDescending(ri => ri.Order)
-				.FirstOrDefault(emptyCell);
-			Console.BackgroundColor = renderInfo.Color;
-			Console.Write(renderInfo.Character);
-		}
-
-		Console.WriteLine();
-	}
-
-	Thread.Sleep(100);
 }
