@@ -10,6 +10,8 @@ namespace Movement
 
         private IMovementInputProvider _inputProvider;
 
+        public Vector2 LastDirection { get; private set; }
+
         private void Start()
         {
             _inputProvider = GetComponent<IMovementInputProvider>();
@@ -17,8 +19,10 @@ namespace Movement
 
         private void FixedUpdate()
         {
-            var velocity = _inputProvider.Direction * _speed;
+            var direction = _inputProvider.Direction;
+            var velocity = direction * _speed;
             _rigidbody.velocity = velocity;
+            LastDirection = direction;
         }
     }
 }
