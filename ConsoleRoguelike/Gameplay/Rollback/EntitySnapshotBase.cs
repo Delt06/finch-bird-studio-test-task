@@ -4,9 +4,9 @@ namespace ConsoleRoguelike.Gameplay.Rollback;
 
 public abstract class EntitySnapshotBase : ISnapshot
 {
-	protected readonly Vector2Int Position;
+    protected readonly Vector2Int Position;
 
-	protected EntitySnapshotBase(Vector2Int position) => Position = position;
+    protected EntitySnapshotBase(Vector2Int position) => Position = position;
 
-	public abstract void Restore(IGame game);
+    public abstract void Restore(IGame game);
 }

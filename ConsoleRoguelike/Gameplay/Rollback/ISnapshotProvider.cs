@@ -2,5 +2,5 @@
 
 public interface ISnapshotProvider
 {
-	ISnapshot Capture();
+    ISnapshot Capture();
 }

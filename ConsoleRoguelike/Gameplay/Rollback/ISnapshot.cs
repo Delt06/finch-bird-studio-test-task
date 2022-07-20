@@ -2,5 +2,5 @@
 
 public interface ISnapshot
 {
-	void Restore(IGame game);
+    void Restore(IGame game);
 }
