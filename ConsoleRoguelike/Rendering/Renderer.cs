@@ -35,6 +35,7 @@ public class Renderer
 			Console.WriteLine();
 		}
 
+		Console.ResetColor();
 		Thread.Sleep(100);
 	}
 

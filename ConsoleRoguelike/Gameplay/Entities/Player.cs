@@ -1,8 +1,9 @@
-﻿using ConsoleRoguelike.InputHandling;
+﻿using ConsoleRoguelike.Gameplay.Rollback;
+using ConsoleRoguelike.InputHandling;
 
 namespace ConsoleRoguelike.Gameplay.Entities;
 
-public class Player : Entity
+public class Player : EntityBase, ISnapshotProvider
 {
 	private readonly Input _input;
 
@@ -13,7 +14,9 @@ public class Player : Entity
 	}
 
 	public bool MadeMove { get; private set; }
-	public int Health { get; private set; }
+	public int Health { get; set; }
+
+	public ISnapshot Capture() => new PlayerSnapshot(Position, Health);
 
 	public override void Update(IGame game)
 	{
@@ -38,10 +41,5 @@ public class Player : Entity
 
 		game.Place(this, newPosition);
 		MadeMove = true;
-	}
-
-	public void TakeDamage(int damage)
-	{
-		Health -= damage;
 	}
 }

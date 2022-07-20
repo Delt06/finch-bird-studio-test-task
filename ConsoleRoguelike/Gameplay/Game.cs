@@ -58,4 +58,15 @@ public class Game : IGame
 	{
 		_destroyedEntities.Clear();
 	}
+
+	public void Clear()
+	{
+		for (var xi = 0; xi < LevelSize.X; xi++)
+		{
+			for (var yi = 0; yi < LevelSize.Y; yi++)
+			{
+				_level[xi, yi].Clear();
+			}
+		}
+	}
 }

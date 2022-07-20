@@ -12,4 +12,5 @@ public interface IGame
 	void Place(IEntity entity, Vector2Int position);
 	void Destroy(IEntity entity);
 	void OnLateUpdate();
+	void Clear();
 }

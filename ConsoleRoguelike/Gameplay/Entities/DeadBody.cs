@@ -1,6 +1,9 @@
-﻿namespace ConsoleRoguelike.Gameplay.Entities;
+﻿using ConsoleRoguelike.Gameplay.Rollback;
 
-public class DeadBody : Entity
+namespace ConsoleRoguelike.Gameplay.Entities;
+
+public class DeadBody : EntityBase, ISnapshotProvider
 {
+	public ISnapshot Capture() => new BasicEntitySnapshot<DeadBody>(Position);
 	public override void Update(IGame game) { }
 }

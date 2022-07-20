@@ -1,14 +1,17 @@
-﻿using ConsoleRoguelike.Shared;
+﻿using ConsoleRoguelike.Gameplay.Rollback;
+using ConsoleRoguelike.Shared;
 
 namespace ConsoleRoguelike.Gameplay.Entities;
 
-public class Enemy : Entity, IOnPreDestroyHandler, IDestructibleByPlayer
+public class Enemy : EntityBase, IOnPreDestroyHandler, IDestructibleByPlayer, ISnapshotProvider
 {
 	public void OnPreDestroy(IGame game)
 	{
 		var deadBody = new DeadBody();
 		game.Place(deadBody, Position);
 	}
+
+	public ISnapshot Capture() => new BasicEntitySnapshot<Enemy>(Position);
 
 	public override void Update(IGame game)
 	{
@@ -23,7 +26,7 @@ public class Enemy : Entity, IOnPreDestroyHandler, IDestructibleByPlayer
 
 		if (offset.ManhattanLength <= 1)
 		{
-			game.Player.TakeDamage(1);
+			game.Player.Health -= 1;
 			return;
 		}
 
