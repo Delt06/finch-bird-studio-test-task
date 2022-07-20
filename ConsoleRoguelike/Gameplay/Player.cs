@@ -10,8 +10,3 @@ public class Player : Entity, IMoving
 
 	public Vector2Int MakeMove(Game game) => _input.Movement;
 }
-
-public abstract class Entity 
-{
-	public Vector2Int Position { get; set; }
-}
