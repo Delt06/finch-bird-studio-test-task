@@ -9,6 +9,7 @@ public class Renderer
 		{
 			Player => new RenderInfo('P', 1, ConsoleColor.Green),
 			Enemy => new RenderInfo('E', 1, ConsoleColor.Red),
+			DeadBody => new RenderInfo('X', 0, ConsoleColor.DarkRed),
 			_ => throw new ArgumentException("Unknown entity type"),
 		};
 }
