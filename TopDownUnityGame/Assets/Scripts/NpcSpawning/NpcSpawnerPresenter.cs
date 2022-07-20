@@ -14,7 +14,11 @@ namespace NpcSpawning
 
         private void OnGUI()
         {
-            GUI.Label(new Rect(20, 20, 200, 50), "Press SPACE to spawn an NPC");
+            const int fontSize = 32;
+            var oldFontSize = GUI.skin.label.fontSize;
+            GUI.skin.label.fontSize = fontSize;
+            GUI.Label(new Rect(20, 20, 600, 100), "Press SPACE to spawn an NPC");
+            GUI.skin.label.fontSize = oldFontSize;
         }
     }
 }

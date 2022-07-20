@@ -3,3 +3,5 @@
 Time spent: ~1 hour.
 
 > Built with Unity 2021.3.0f1.
+
+![Screenshot](Documentation/screenshot.jpg)
