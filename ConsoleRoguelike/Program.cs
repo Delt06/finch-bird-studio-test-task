@@ -1,4 +1,5 @@
 ﻿using ConsoleRoguelike.Gameplay;
+using ConsoleRoguelike.InputHandling;
 using ConsoleRoguelike.Rendering;
 using ConsoleRoguelike.Shared;
 
@@ -16,37 +17,16 @@ game.Place(new Enemy(), new Vector2Int(3, 7));
 game.Place(new Enemy(), new Vector2Int(8, 1));
 
 
+var inputSystem = new InputSystem(input);
 var renderer = new Renderer(game);
 
 renderer.Render();
 
 while (true)
 {
-	ReadInput(input);
+	inputSystem.ReadInput();
 	UpdateGame(game);
 	renderer.Render();
-}
-
-static void ReadInput(Input input)
-{
-	while (true)
-	{
-		var key = Console.ReadKey();
-
-		var inputMovement = key switch
-		{
-			{ Key: ConsoleKey.UpArrow } => new Vector2Int(0, -1),
-			{ Key: ConsoleKey.DownArrow } => new Vector2Int(0, 1),
-			{ Key: ConsoleKey.LeftArrow } => new Vector2Int(-1, 0),
-			{ Key: ConsoleKey.RightArrow } => new Vector2Int(1, 0),
-			_ => (Vector2Int?)null,
-		};
-
-		if (inputMovement == null) continue;
-
-		input.Movement = inputMovement.Value;
-		break;
-	}
 }
 
 static void UpdateGame(Game game)
