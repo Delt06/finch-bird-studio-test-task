@@ -2,7 +2,7 @@
 
 namespace ConsoleRoguelike.Gameplay;
 
-public class Game
+public class Game : IGame
 {
 	private readonly HashSet<IEntity> _destroyedEntities = new();
 	private readonly HashSet<IEntity>[,] _level;

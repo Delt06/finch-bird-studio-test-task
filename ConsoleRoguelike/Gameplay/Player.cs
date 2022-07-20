@@ -15,7 +15,7 @@ public class Player : Entity
 	public bool MadeMove { get; private set; }
 	public int Health { get; private set; }
 
-	public override void Update(Game game)
+	public override void Update(IGame game)
 	{
 		MadeMove = false;
 

@@ -5,9 +5,9 @@ namespace ConsoleRoguelike.Rendering;
 
 public class Renderer
 {
-	private readonly Game _game;
+	private readonly IGame _game;
 
-	public Renderer(Game game) => _game = game;
+	public Renderer(IGame game) => _game = game;
 
 	public void Render()
 	{

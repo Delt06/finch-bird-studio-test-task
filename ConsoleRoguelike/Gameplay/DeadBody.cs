@@ -2,5 +2,5 @@
 
 public class DeadBody : Entity
 {
-	public override void Update(Game game) { }
+	public override void Update(IGame game) { }
 }

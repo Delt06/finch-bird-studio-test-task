@@ -2,5 +2,5 @@
 
 public interface IOnPreDestroyHandler
 {
-	void OnPreDestroy(Game game);
+	void OnPreDestroy(IGame game);
 }

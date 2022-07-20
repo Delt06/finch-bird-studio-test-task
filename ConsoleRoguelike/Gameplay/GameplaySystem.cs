@@ -4,8 +4,8 @@ namespace ConsoleRoguelike.Gameplay;
 
 public class GameplaySystem
 {
-	private readonly Game _game;
-	public GameplaySystem(Game game) => _game = game;
+	private readonly IGame _game;
+	public GameplaySystem(IGame game) => _game = game;
 
 	public void Update()
 	{

@@ -4,13 +4,13 @@ namespace ConsoleRoguelike.Gameplay;
 
 public class Enemy : Entity, IOnPreDestroyHandler, IDestructibleByPlayer
 {
-	public void OnPreDestroy(Game game)
+	public void OnPreDestroy(IGame game)
 	{
 		var deadBody = new DeadBody();
 		game.Place(deadBody, Position);
 	}
 
-	public override void Update(Game game)
+	public override void Update(IGame game)
 	{
 		if (!game.Player.MadeMove) return;
 
